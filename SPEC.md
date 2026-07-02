@@ -52,9 +52,14 @@ claude-guide-portal/
 - 허브 히어로/카드 일러스트 등 필요 이미지는 ComfyUI(ZIT 또는 Krea2)로 생성 → `assets/`.
 - 기존 원격제어 가이드의 `generate_guide_images.py` 패턴 참고.
 
-## 배포
-- 새 repo `jakeon32/claude-guide-portal` 생성 → `.nojekyll` → jakeon32 계정 push → GitHub Pages.
-- 기존 3개 사이트는 당분간 유지, 이식 완료분부터 포탈 내부로 대체.
+## 배포 · 버전관리 · 캐시 방지
+- repo `jakeon32/claude-guide-portal`, `.nojekyll`, GitHub Pages(master, jakeon32).
+- **★캐시 때문에 업데이트가 안 보이는 문제 방지**: 반드시 **`bash deploy.sh "메시지"`** 로 배포. 내부적으로 `build.py`가:
+  1. `shared.css`/`shared.js` 참조에 **콘텐츠 해시 기반 `?v=xxxxxxxx`** 부여 → 자산이 바뀌면 URL이 바뀌어 브라우저가 강제로 새로 받음(안 바뀌면 그대로 캐시).
+  2. 각 페이지 `<head>`에 `no-cache, must-revalidate` 메타 삽입(HTML 재검증).
+  3. 푸터 **빌드 스탬프**(`날짜 · 해시`)를 `{{BUILD}}`/`.build`에 갱신 → 어느 버전이 라이브인지 눈으로 확인.
+- 새 HTML 추가 시: `<head>` charset 다음은 build.py가 메타를 자동 삽입, shared.css/js는 `?v=` 없이 그냥 링크(build.py가 붙임), 푸터에 `<span class="build">{{BUILD}}</span>` 넣으면 스탬프 자동.
+- 인라인 CSS 모듈(현 discord.html)은 자산 캐시 이슈 없음(HTML만 no-cache 메타 적용).
 
 ## v1 완료 기준
 - 라이트 기본 테마 허브 + shared.css + 디스코드 모듈이 로컬에서 정상 렌더(테마 토글·네비·카드 동작), GitHub Pages 배포 후 접속 확인.
