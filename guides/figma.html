@@ -49,6 +49,7 @@
       <li><a href="#step3"><span class="n">3</span> 플러그인 설치</a></li>
       <li><a href="#step4"><span class="n">4</span> 재시작</a></li>
       <li><a href="#step5"><span class="n">5</span> 연결 테스트</a></li>
+      <li><a href="#skill"><span class="n">+</span> 작업 스킬 설치</a></li>
       <li><a href="#usage"><span class="n">·</span> 활용 예</a></li>
       <li><a href="#faq"><span class="n">·</span> 문제 해결</a></li>
       <li><a href="#security"><span class="n">·</span> 보안</a></li>
@@ -241,6 +242,37 @@ Cursor          : ~/.cursor/mcp.json</pre></div>
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <section class="section" id="skill" style="padding-top:0">
+      <div class="section-head">
+        <h2>연동 후 — Figma 작업 스킬 설치</h2>
+        <p class="lead">연결만으로도 쓸 수 있지만, <b>figma-component-design 스킬</b>을 깔면 컴포넌트·디자인 시스템 작업이 훨씬 정교해집니다.</p>
+      </div>
+      <p>이 스킬은 figma-console MCP 위에서 동작하며, 버튼·카드·모달 같은 컴포넌트를 <b>Auto Layout · Variant · Variable · 디자인 토큰</b>까지 제대로 갖춰 만들어 줍니다. (Atoms → Organisms 아토믹 디자인)</p>
+      <div class="steps">
+        <article class="step" id="skill-a">
+          <div class="step-num">A</div>
+          <div class="step-body">
+            <h3>공식 플러그인에서 설치</h3>
+            <p>Claude Code에서 <code>/plugin</code> 을 실행하고, 공식 마켓플레이스에서 <b>figma</b> 플러그인을 찾아 설치합니다.</p>
+            <div class="code"><button class="copy" type="button">복사</button><pre>/plugin</pre></div>
+            <p>→ 마켓플레이스 <code>claude-plugins-official</code> → <b>figma</b> 선택 → Install. 이 플러그인이 <code>figma-component-design</code> 스킬을 포함합니다. 설치 후 세션을 다시 시작하면 스킬이 로드됩니다.</p>
+          </div>
+        </article>
+        <article class="step" id="skill-b">
+          <div class="step-num">B</div>
+          <div class="step-body">
+            <h3>바로 시켜보기</h3>
+            <p>Figma가 연결된 상태에서 이렇게 말하면 스킬이 자동으로 발동합니다.</p>
+            <div class="code"><button class="copy" type="button">복사</button><pre>버튼 컴포넌트를 Variant(기본/호버/비활성)까지 만들어줘</pre></div>
+            <p>→ 스킬이 <b>컴포넌트 설계 → 생성 → 스크린샷 검증</b> 순서로 제대로 만들어 줍니다.</p>
+          </div>
+        </article>
+      </div>
+      <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
+        <div><b>스킬 ≠ 연동.</b> figma-console MCP 연결(위 5단계)이 먼저이고, 스킬은 그 위에서 "잘 만들도록" 돕는 전문 지식입니다. 스킬도 시작할 때 먼저 <code>figma_get_status</code>로 연결을 확인합니다.</div>
       </div>
     </section>
 
