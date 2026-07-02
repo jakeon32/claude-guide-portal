@@ -161,6 +161,39 @@ h1,h2,h3,h4{word-break:keep-all;text-wrap:balance;overflow-wrap:anywhere;letter-
 .gcard--soon .gicon{background:var(--surface-2);color:var(--faint)}
 .gcard--soon .go{color:var(--faint)}
 
+/* ---------- 히어로 배지 ---------- */
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 2rem}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:.55rem .9rem;font-size:.88rem;font-weight:500}
+.badge svg{width:16px;height:16px;color:var(--accent);flex:none}
+
+/* ---------- 작동 원리 flow ---------- */
+.flow{display:grid;grid-template-columns:1fr;gap:.8rem;align-items:stretch;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(1.2rem,3vw,2rem)}
+@media(min-width:760px){.flow{grid-template-columns:1fr auto 1fr auto 1fr;align-items:center}}
+.node{text-align:center;padding:1.1rem .9rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface-2)}
+.node .ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin:0 auto .7rem;background:var(--accent-soft);color:var(--accent)}
+.node .ico svg{width:24px;height:24px}
+.node h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.25rem}
+.node p{font-size:.84rem;color:var(--muted);line-height:1.5}
+.flow-arrow{display:grid;place-items:center;color:var(--faint)}
+.flow-arrow svg{width:24px;height:24px}
+@media(max-width:759px){.flow-arrow{transform:rotate(90deg)}}
+.flow-note{margin-top:1rem;font-size:.9rem;color:var(--muted)}
+
+/* ---------- 준비물 ---------- */
+.prep-grid{display:grid;gap:1rem;grid-template-columns:1fr}
+@media(min-width:680px){.prep-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.prep-grid{grid-template-columns:repeat(4,1fr)}}
+.prep{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem}
+.prep .ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);margin-bottom:.8rem}
+.prep .ico svg{width:20px;height:20px}
+.prep h4{font-family:var(--font-display);margin-bottom:.35rem;font-size:1rem}
+.prep p{font-size:.88rem;color:var(--muted)}
+
+/* ---------- OS 구분 블록 (Windows / macOS) ---------- */
+.oslabel{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.74rem;font-weight:600;letter-spacing:.02em;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:99px;padding:.25rem .7rem;margin:.9rem 0 .3rem}
+.oslabel svg{width:13px;height:13px}
+.oslabel.win{color:var(--moon)} .oslabel.mac{color:var(--text)}
+
 /* ---------- 콜아웃 ---------- */
 .callout{display:flex;gap:.85rem;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius-sm);padding:1rem 1.15rem;margin:1.2rem 0;font-size:.94rem}
 .callout .ci{flex:none;color:var(--accent);margin-top:.15rem}
