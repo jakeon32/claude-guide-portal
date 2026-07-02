@@ -156,13 +156,17 @@
             <h3>figma-console MCP 서버 등록</h3>
             <p>사용하는 클라이언트에 맞춰 하나만 하면 됩니다.</p>
 
-            <p style="margin-top:.8rem"><b>Claude Code (CLI) — 가장 간단</b></p>
-            <p>터미널에 아래 한 줄. <code>figd_YOUR_TOKEN</code> 자리에 방금 복사한 토큰을 붙여넣습니다. (Windows·macOS 동일)</p>
-            <div class="code"><button class="copy" type="button">복사</button><pre>claude mcp add figma-console -s user \
-  -e FIGMA_ACCESS_TOKEN=figd_YOUR_TOKEN \
-  -e ENABLE_MCP_APPS=true \
-  -- npx -y figma-console-mcp@latest</pre></div>
-            <p class="flow-note" style="margin-top:.5rem">Windows에서 한 줄로 붙일 땐 줄바꿈(<code>\</code>)을 빼고 이어서 입력하면 됩니다.</p>
+            <p style="margin-top:.8rem"><b>가장 쉬운 방법 — Claude에게 맡기기 (명령 편집 불필요)</b></p>
+            <p>이미 Claude Code를 쓰고 있으니, 명령을 손으로 만들 필요 없이 Claude에게 아래처럼 말하면 됩니다. 문장 끝에 Step 1에서 복사해둔 토큰(<code>figd_…</code>)을 그대로 붙여넣으세요.</p>
+            <div class="code"><button class="copy" type="button">복사</button><pre>figma-console MCP를 등록해줘. 범위는 user, ENABLE_MCP_APPS는 true로. 내 Figma 토큰은 이거야: </pre></div>
+            <p>→ Claude가 알맞은 <code>claude mcp add</code> 명령을 스스로 실행합니다. 복사한 걸 손으로 고칠 일이 전혀 없습니다.</p>
+
+            <p style="margin-top:1.2rem"><b>또는 직접 명령으로 (한 줄)</b></p>
+            <p><code>figd_YOUR_TOKEN</code>만 실제 토큰으로 바꿔 <b>한 줄 그대로</b> 붙여넣습니다. (Windows·macOS 공통)</p>
+            <div class="code"><button class="copy" type="button">복사</button><pre>claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=figd_YOUR_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@latest</pre></div>
+            <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
+              <div>여러 줄로 나뉜 예시의 <code>\</code>(백슬래시)는 macOS·Linux 줄바꿈 기호라 <b>Windows(PowerShell·cmd)에서는 에러</b>가 납니다. 위 블록은 한 줄이라 어디서든 그대로 됩니다.</div>
+            </div>
 
             <p style="margin-top:1.2rem"><b>Claude Desktop / Cursor / Windsurf — 설정 파일 직접 편집</b></p>
             <p>설정 파일에 아래 블록을 <code>mcpServers</code> 안에 추가합니다.</p>
