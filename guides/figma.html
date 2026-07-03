@@ -77,7 +77,7 @@
     <section class="section" id="how">
       <div class="section-head">
         <h2>한눈에 보는 작동 원리</h2>
-        <p class="lead">Claude와 Figma는 <b>MCP 서버</b>와 <b>Figma 플러그인</b>이 다리 역할을 해서 연결됩니다.</p>
+        <p class="lead">Claude와 Figma는 <b>MCP</b>(Model Context Protocol — Claude에 외부 프로그램을 연결해 주는 표준 연결 방식) <b>서버</b>와 <b>Figma 플러그인</b>이 다리 역할을 해서 연결됩니다.</p>
       </div>
       <div class="flow">
         <div class="node">
@@ -89,7 +89,7 @@
         <div class="node">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4M8 9l2 2-2 2M14 12h2"/></svg></div>
           <h4>figma-console MCP</h4>
-          <p>npx로 뜨는 서버(브리지)</p>
+          <p>npx(Node.js에 함께 깔리는 실행 도구)로 뜨는 서버(브리지)</p>
         </div>
         <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         <div class="node">
@@ -115,7 +115,7 @@
         <div class="prep">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="5" r="3"/><circle cx="9" cy="19" r="3"/><circle cx="15" cy="12" r="3"/><path d="M9 8v8M9 5h3a3 3 0 0 1 0 6H9"/></svg></div>
           <h4>Figma Desktop 앱</h4>
-          <p>웹 브라우저 버전이 아니라 <b>데스크톱 앱</b>이어야 플러그인을 쓸 수 있습니다.</p>
+          <p>이 가이드의 플러그인(manifest 가져오기)은 웹 브라우저 버전이 아닌 <b>데스크톱 앱</b>에서만 설치됩니다.</p>
         </div>
         <div class="prep">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 1 4 4 4 4 0 0 1-1 8H9a4 4 0 0 1-1-8 4 4 0 0 1 4-4z"/><path d="M12 15v6"/></svg></div>
@@ -145,10 +145,10 @@
             <p>Figma → 오른쪽 위 프로필 → <b>Settings</b> → <b>Security</b> 탭 → <b>Personal access tokens</b> → <b>Generate new token</b>.</p>
             <p>설명은 <code>Figma Console MCP</code>로 적고, 아래 <b>권한(스코프)</b>을 설정합니다.</p>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-              <div><b>스코프</b> — File content: <b>Read</b> · File versions: <b>Read</b> · Variables: <b>Read</b> · Comments: <b>Read and write</b></div>
+              <div><b>스코프</b> — File content: <b>Read</b> · File versions: <b>Read</b> · Variables: <b>Read</b> · Comments: <b>Read and write</b>. 목록에 없는 항목은 건너뛰어도 기본 기능은 동작합니다.</div>
             </div>
             <div class="callout warn"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
-              <div>토큰은 <b>figd_</b> 로 시작하고 <b>딱 한 번만</b> 표시됩니다. 바로 복사해 안전한 곳에 보관하세요.</div>
+              <div>토큰은 <b>figd_</b>로 시작하고 <b>딱 한 번만</b> 표시됩니다. 바로 복사해 안전한 곳에 보관하세요.</div>
             </div>
           </div>
         </article>
@@ -160,18 +160,18 @@
             <p>사용하는 클라이언트에 맞춰 하나만 하면 됩니다.</p>
 
             <p style="margin-top:.8rem"><b>가장 쉬운 방법 — Claude에게 맡기기 (명령 편집 불필요)</b></p>
-            <p>이미 Claude Code를 쓰고 있으니, 명령을 손으로 만들 필요 없이 Claude에게 아래처럼 말하면 됩니다. 문장 끝에 Step 1에서 복사해둔 토큰(<code>figd_…</code>)을 그대로 붙여넣으세요.</p>
+            <p>Claude Code를 쓰고 있다면, 명령을 손으로 만들 필요 없이 Claude에게 아래처럼 말하면 됩니다. 문장 끝에 Step 1에서 복사해둔 토큰(<code>figd_…</code>)을 그대로 붙여넣으세요.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>figma-console MCP를 등록해줘. 범위는 user, ENABLE_MCP_APPS는 true로. 내 Figma 토큰은 이거야: </pre></div>
-            <p>→ Claude가 알맞은 <code>claude mcp add</code> 명령을 스스로 실행합니다. 복사한 걸 손으로 고칠 일이 전혀 없습니다.</p>
+            <p>→ Claude가 알맞은 <code>claude mcp add</code> 명령을 스스로 실행합니다. 복사한 걸 손으로 고칠 일이 전혀 없습니다. <code>ENABLE_MCP_APPS</code>는 부가 기능을 켜는 스위치 — 그대로 두면 됩니다.</p>
 
             <p style="margin-top:1.2rem"><b>또는 직접 명령으로 (한 줄)</b></p>
             <p><code>figd_YOUR_TOKEN</code>만 실제 토큰으로 바꿔 <b>한 줄 그대로</b> 붙여넣습니다. (Windows·macOS 공통)</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>claude mcp add figma-console -s user -e FIGMA_ACCESS_TOKEN=figd_YOUR_TOKEN -e ENABLE_MCP_APPS=true -- npx -y figma-console-mcp@latest</pre></div>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-              <div>여러 줄로 나뉜 예시의 <code>\</code>(백슬래시)는 macOS·Linux 줄바꿈 기호라 <b>Windows(PowerShell·cmd)에서는 에러</b>가 납니다. 위 블록은 한 줄이라 어디서든 그대로 됩니다.</div>
+              <div>인터넷의 다른 안내처럼 명령이 여러 줄로 나뉜 경우, 줄 끝 <code>\</code>(백슬래시)는 macOS·Linux 줄바꿈 기호라 <b>Windows에서는 에러</b>가 납니다. 이 가이드의 블록은 한 줄이라 그대로 됩니다.</div>
             </div>
 
-            <p style="margin-top:1.2rem"><b>Claude Desktop / Cursor / Windsurf — 설정 파일 직접 편집</b></p>
+            <p style="margin-top:1.2rem"><b>Claude Desktop / Cursor — 설정 파일 직접 편집</b></p>
             <p>설정 파일에 아래 블록을 <code>mcpServers</code> 안에 추가합니다.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>{
   "mcpServers": {
@@ -213,9 +213,9 @@ Cursor          : ~/.cursor/mcp.json</pre></div>
             <div class="code"><pre>~/.figma-console-mcp/plugin/manifest.json
 = /Users/내이름/.figma-console-mcp/plugin/manifest.json</pre></div>
             <p>이 폴더는 MCP 서버가 처음 실행될 때 <b>자동으로 만들어집니다</b>. 안 보이면 Step 2까지 마친 뒤 클라이언트를 한 번 실행해 서버를 띄우세요.</p>
-            <p>가져온 다음 <b>플러그인을 실행</b>하면 포트 9223~9232를 스캔해 <b>실행 중인 MCP 서버에 자동 연결</b>됩니다.</p>
+            <p>가져온 다음 <b>Plugins → Development → 방금 가져온 플러그인(Figma Desktop Bridge)</b>을 클릭해 실행하면 포트 9223~9232를 스캔해 <b>실행 중인 MCP 서버에 자동 연결</b>됩니다.</p>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-              <div>Figma는 플러그인 파일을 캐시합니다. 업데이트 후 새 기능이 안 보이면 <b>Plugins → Manage plugins</b>에서 같은 manifest를 다시 가져오세요(경로는 항상 동일).</div>
+              <div>Figma는 플러그인 파일을 캐시합니다. 업데이트 후 새 기능이 안 보이면 <b>Import plugin from manifest…</b>를 같은 경로로 다시 실행하세요.</div>
             </div>
           </div>
         </article>
@@ -234,7 +234,7 @@ Cursor          : ~/.cursor/mcp.json</pre></div>
             <h3>연결 테스트</h3>
             <p>Claude에게 아래처럼 말해봅니다.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>Figma 상태를 확인해줘</pre></div>
-            <p>→ WebSocket이 연결된 상태(active)로 나오면 성공입니다.</p>
+            <p>→ 연결 상태가 active(연결됨)로 나오면 성공입니다.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>파란 배경의 프레임을 하나 만들어줘</pre></div>
             <p>→ Figma에 실제로 프레임이 생기면 <b>쓰기 권한까지 정상</b>입니다.</p>
             <div class="callout ok"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -280,13 +280,13 @@ Cursor          : ~/.cursor/mcp.json</pre></div>
     <section class="section" id="usage" style="padding-top:0">
       <div class="section-head">
         <h2>연동 후 이렇게 씁니다</h2>
-        <p class="lead">전체 106개 도구. 자주 쓰는 것들:</p>
+        <p class="lead">도구 100개 이상. 자주 쓰는 것들:</p>
       </div>
       <div class="prep-grid">
         <div class="prep"><h4>디자인 추출</h4><p>변수·컴포넌트·스타일을 읽어 코드/토큰으로. "이 파일 디자인 토큰 뽑아줘"</p></div>
         <div class="prep"><h4>디자인 생성·수정</h4><p>프레임·컴포넌트·레이아웃을 직접 생성/편집. "카드 컴포넌트 만들어줘"</p></div>
         <div class="prep"><h4>스크린샷 검증</h4><p>결과를 캡처해 정렬·간격을 확인하고 반복 수정.</p></div>
-        <div class="prep"><h4>토큰·변수 동기화</h4><p>Figma 변수 ↔ DTCG JSON·CSS 양방향 싱크.</p></div>
+        <div class="prep"><h4>토큰·변수 동기화</h4><p>Figma 변수 ↔ 표준 디자인 토큰 형식(DTCG) JSON·CSS 양방향 싱크.</p></div>
       </div>
       <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l4.5-9 4 6 3-4L20 16" /><rect x="3" y="4" width="18" height="16" rx="2"/></svg></span>
         <div><b>우리 노하우</b> — ComfyUI로 생성한 이미지를 Figma에 넣을 땐, 로컬 CORS 프록시(9225)로 이미지를 가져와 <code>figma_set_image_fill</code>로 채웁니다. (천안 셔틀 상품 이미지 제작에 사용)</div>
@@ -302,7 +302,7 @@ Cursor          : ~/.cursor/mcp.json</pre></div>
         <div><b>"연결 안 됨" / 상태가 비활성</b> — ① Figma에서 Bridge 플러그인을 <b>다시 실행</b> ② MCP 클라이언트를 <b>재시작</b> ③ Figma가 <b>데스크톱 앱</b>인지(웹 아님) 확인 ④ 포트 9223~9232를 막는 방화벽·VPN이 없는지.</div>
       </div>
       <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-        <div><b>읽기는 되는데 생성·수정이 안 됨</b> — 토큰 스코프가 부족하거나 Read-only 모드입니다. Step 1 스코프를 다시 확인하고, NPX 방식(전체 106툴)으로 등록했는지 보세요.</div>
+        <div><b>읽기는 되는데 생성·수정이 안 됨</b> — 토큰 스코프가 부족하거나 Read-only 모드입니다. Step 1 스코프를 다시 확인하고, 이 가이드대로(npx 명령으로) 등록했는지 확인하세요.</div>
       </div>
       <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
         <div><b>manifest.json이 안 보임</b> — Step 2까지 마치고 클라이언트를 한 번 실행해 서버를 띄우면 <code>~/.figma-console-mcp/plugin/</code>이 자동 생성됩니다. 처음 <code>npx</code> 실행은 다운로드로 몇 분 걸릴 수 있습니다.</div>

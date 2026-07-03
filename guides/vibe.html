@@ -94,7 +94,7 @@
             <li style="display:flex;gap:.5rem;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;margin-top:.2rem"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b style="color:var(--text)">제각각</b> — 사람마다 AI에게 다른 규칙을 알려줘 코드 스타일이 뒤죽박죽</span></li>
             <li style="display:flex;gap:.5rem;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;margin-top:.2rem"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b style="color:var(--text)">되돌리기 불가</b> — 뭔가 망가져도 어디서부터 잘못됐는지 못 찾음</span></li>
             <li style="display:flex;gap:.5rem;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;margin-top:.2rem"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b style="color:var(--text)">"내 컴에선 됨"</b> — 옆 사람 컴퓨터에선 안 돌아감</span></li>
-            <li style="display:flex;gap:.5rem;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;margin-top:.2rem"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b style="color:var(--text)">비밀번호 유출</b> — API 키가 그대로 공유돼 사고로 이어짐</span></li>
+            <li style="display:flex;gap:.5rem;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;margin-top:.2rem"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b style="color:var(--text)">비밀번호 유출</b> — API 키(외부 서비스를 쓸 때 필요한 비밀번호 같은 열쇠 문자열)가 그대로 공유돼 사고로 이어짐</span></li>
           </ul>
         </div>
         <div class="prep">
@@ -136,7 +136,7 @@
             <h3>환경 재현성</h3>
             <div class="gmeta"><span class="tag">= 똑같은 작업대</span></div>
             <p>요리 레시피처럼 "필요한 재료 목록"을 함께 둬요. 그러면 누구 컴퓨터에서든 똑같은 환경이 자동으로 차려집니다.</p>
-            <div style="font-size:.84rem;color:var(--faint);border-top:1px solid var(--border);padding-top:.7rem"><b style="color:var(--accent)">.env.example</b> 와 의존성 목록(프로그램이 돌아가는 데 필요한 부품 목록)을 함께 공유하기</div>
+            <div style="font-size:.84rem;color:var(--faint);border-top:1px solid var(--border);padding-top:.7rem"><b style="color:var(--accent)">.env.example</b>(진짜 키를 뺀 예시 양식)과 의존성 목록(프로그램이 돌아가는 데 필요한 부품 목록)을 함께 공유하기</div>
           </article>
           <article class="gcard">
             <div class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
@@ -150,13 +150,13 @@
             <h3>시크릿 관리</h3>
             <div class="gmeta"><span class="tag">= 비밀번호 안 흘리기</span></div>
             <p>API 키 같은 비밀은 집 열쇠와 같아요. 코드에 그대로 넣어 공유하면 사고로 이어집니다. 따로 안전하게 관리해요.</p>
-            <div style="font-size:.84rem;color:var(--faint);border-top:1px solid var(--border);padding-top:.7rem">비밀 키는 <b style="color:var(--accent)">절대 git에 올리지 않기</b> (.gitignore 활용)</div>
+            <div style="font-size:.84rem;color:var(--faint);border-top:1px solid var(--border);padding-top:.7rem">비밀 키는 <b style="color:var(--accent)">절대 git에 올리지 않기</b> (git에 올리지 않을 파일 목록 = .gitignore)</div>
           </article>
           <article class="gcard">
             <div class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
             <h3>한 줄 요약</h3>
             <div class="gmeta"><span class="tag">기억할 단 하나</span></div>
-            <p style="color:var(--text);font-weight:600">"사람 온보딩 문서 = AI 온보딩 문서." 레포만 받으면 사람이든 AI든 같은 규칙으로 일하게 만들면 끝!</p>
+            <p style="color:var(--text);font-weight:600">"사람 온보딩 문서 = AI 온보딩 문서." 저장소(레포)만 받으면 사람이든 AI든 같은 규칙으로 일하게 만들면 끝!</p>
           </article>
         </div>
       </div>
@@ -197,7 +197,7 @@
           <div class="step-num">1</div>
           <div class="step-body">
             <h3>시작하기</h3>
-            <p style="color:var(--faint);font-size:.86rem;margin-top:-.2rem">새 상자 열기 · 기존 상자 받기</p>
+            <p style="color:var(--faint);font-size:.86rem;margin-top:-.2rem">새로 시작 · 기존 프로젝트 받기</p>
             <p>작업을 Git으로 관리하겠다고 첫 선언을 하거나, 팀의 기존 프로젝트를 통째로 내려받아요.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>git init</pre></div>
             <p>→ <b>새로 시작</b>할 때. 이 폴더를 "타임머신이 작동하는 폴더"로 만들어요.</p>
@@ -260,7 +260,7 @@
             <div class="code"><button class="copy" type="button">복사</button><pre>git push</pre></div>
             <p>→ 이제야 팀원도 내 작업을 볼 수 있어요. <b>올리기 전엔 나만</b> 가지고 있는 상태.</p>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M16 8l-2 6-6 2 2-6z"/></svg></span>
-              <div><b>처음 올릴 때</b>는 인터넷 저장소와 주소를 한 번 연결해줘야 해요(<code>-u</code> 등). 외우지 말고 AI에게 <b>"이거 깃허브에 올려줘"</b>라고 하면 연결까지 한 번에 해줍니다.</div>
+              <div><b>처음 한 번</b>은 저장소 주소 등록이 필요해요. 외우지 말고 AI에게 <b>"이거 깃허브에 올려줘"</b>라고 하면 연결까지 한 번에 해줍니다.</div>
             </div>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
               <div>비유: 사진을 찍어두기만(커밋) 한 것과, 단톡방에 올리는 것(푸시)의 차이예요.</div>
@@ -275,7 +275,7 @@
             <p style="color:var(--faint);font-size:.86rem;margin-top:-.2rem">남이 올린 것 받기</p>
             <p>팀원이 올린 최신 변경을 내 컴퓨터로 받아와요. 작업 시작 전에 습관처럼 하면 좋아요.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>git pull</pre></div>
-            <p>→ 공용 앨범의 <b>최신 상태로 내 폴더를 갱신.</b> 안 받고 작업하면 나중에 충돌이 생겨요.</p>
+            <p>→ 공용 앨범의 <b>최신 상태로 내 폴더를 갱신.</b> 안 받고 작업하면 나중에 충돌이 생기기 쉬워요.</p>
             <div class="callout ok"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
               <div>황금 습관: <b>작업 시작 = pull 먼저</b>, 작업 끝 = add → commit → push.</div>
             </div>
@@ -288,8 +288,8 @@
             <h3>안전한 실험 공간 (브랜치)</h3>
             <p style="color:var(--faint);font-size:.86rem;margin-top:-.2rem">복사본에서 작업</p>
             <p>원본을 건드리지 않고, 복사한 가지(branch)에서 자유롭게 새 기능을 시도해요.</p>
-            <div class="code"><button class="copy" type="button">복사</button><pre>git switch -c 새기능</pre></div>
-            <p>→ "새기능"이라는 <b>안전한 평행 세계</b>를 만들어 그리로 이동. 망쳐도 원본은 멀쩡해요.</p>
+            <div class="code"><button class="copy" type="button">복사</button><pre>git switch -c new-feature</pre></div>
+            <p>→ "new-feature"(예: 새 기능용 가지)라는 <b>안전한 평행 세계</b>를 만들어 그리로 이동. 망쳐도 원본은 멀쩡해요.</p>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
               <div>비유: 문서를 "다른 이름으로 저장"해 사본에서 마음껏 고치는 것과 같아요.</div>
             </div>
@@ -341,7 +341,7 @@
           <ol style="margin:.6rem 0 0 1.1rem;display:flex;flex-direction:column;gap:.45rem;color:var(--muted)">
             <li><b>git status는 안전합니다.</b> 그냥 보는 명령이라 아무리 눌러도 망가지지 않아요. 헷갈리면 먼저 누르세요.</li>
             <li><b>자주 저장(커밋)하세요.</b> 작게 자주 저장할수록 문제가 생겨도 되돌리기 쉬워요.</li>
-            <li><b>막히면 AI에게 그대로 물어보세요.</b> "git에서 이런 에러가 났어, 어떻게 해?"라고 화면을 복붙하면 됩니다.</li>
+            <li><b>막히면 AI에게 그대로 물어보세요.</b> "git에서 이런 에러가 났어, 어떻게 해?"라고 에러 메시지를 복사해 붙여넣으면 됩니다.</li>
           </ol>
         </div>
       </div>
@@ -464,7 +464,7 @@
         <figure style="margin:0 auto 1.8rem;max-width:440px">
           <img src="assets/closing.webp" alt="하나의 공유 레포에서 사람과 AI가 같은 규칙으로 정렬되어 일하는 일러스트" loading="lazy" style="width:100%;border-radius:var(--radius-lg);border:1px solid var(--border)">
         </figure>
-        <p style="font-size:var(--text-xl);font-weight:700;line-height:1.35;font-family:var(--font-display)">"레포만 클론하면 누구든<br><span style="color:var(--accent)">같은 규칙으로 일하게."</span></p>
+        <p style="font-size:var(--text-xl);font-weight:700;line-height:1.35;font-family:var(--font-display)">"저장소만 내려받으면(클론) 누구든<br><span style="color:var(--accent)">같은 규칙으로 일하게."</span></p>
         <p class="lead" style="margin:1.2rem auto 0;color:var(--muted)">이 한 문장만 기억하세요. 사람을 새로 맞이하는 준비가 그대로 AI를 맞이하는 준비가 됩니다. 거창할 필요 없이, 오늘 위 체크리스트 1번부터 시작해 보세요.</p>
         <div class="hero-cta" style="justify-content:center;margin-top:1.8rem">
           <a href="#core" class="btn btn-primary">핵심 5가지 다시 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>

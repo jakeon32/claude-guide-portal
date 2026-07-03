@@ -346,7 +346,6 @@ footer{border-top:1px solid var(--border);margin-top:var(--space-2xl);padding:2.
   .layout{grid-template-columns:1fr;display:block}
   .step-card,.faq,.prep,.use,.flow,.sec-item{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
   .code pre{background:#f4f4f4;color:#111;border:1px solid #ccc}
-  .faq details{open:true}
   .faq .ans{display:block!important}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#666}
   .step{break-inside:avoid}
@@ -461,7 +460,7 @@ footer{border-top:1px solid var(--border);margin-top:var(--space-2xl);padding:2.
         <div class="node n2">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></div>
           <h4>② MCP 서버</h4>
-          <p>메시지를 클로드에게 전달</p>
+          <p>메시지를 클로드에게 전달 (디스코드와 클로드 사이를 이어주는 중계 프로그램)</p>
         </div>
         <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
         <div class="node n3">
@@ -494,7 +493,7 @@ footer{border-top:1px solid var(--border);margin-top:var(--space-2xl);padding:2.
         <div class="prep reveal">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20" opacity=".0"/><path d="M4 17l8 4 8-4M4 12l8 4 8-4M12 2 4 6l8 4 8-4-8-4z"/></svg></div>
           <h4>Bun 런타임</h4>
-          <p>MCP 서버가 <code>Bun</code> 위에서 돕니다. 4단계에서 명령어로 바로 설치하니 지금은 몰라도 OK.</p>
+          <p>MCP 서버가 프로그램 실행 도구인 <code>Bun</code> 위에서 돌아갑니다. 4단계에서 명령어로 바로 설치하니 지금은 몰라도 OK.</p>
         </div>
       </div>
     </section>
@@ -583,7 +582,7 @@ footer{border-top:1px solid var(--border);margin-top:var(--space-2xl);padding:2.
             <div class="body">
               <span class="step-tag tag-discord">Discord 웹</span>
               <h3>봇을 내 서버에 초대하기</h3>
-              <p>디스코드는 같은 서버를 공유해야 봇에게 DM을 보낼 수 있습니다. 그래서 봇을 서버에 초대해 둡니다.</p>
+              <p>디스코드에서는 봇과 같은 서버에 들어가 있어야 DM을 보낼 수 있습니다. 그래서 봇을 서버에 초대해 둡니다.</p>
               <div class="clickpath">
                 <span class="seg">OAuth2</span><span class="arr">›</span>
                 <span class="seg">URL Generator</span><span class="arr">›</span>
@@ -604,7 +603,7 @@ footer{border-top:1px solid var(--border);margin-top:var(--space-2xl);padding:2.
               </ol>
               <div class="callout tip">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
-                <span>DM 전용으로만 쓸 거면 권한이 0개여도 작동하지만, 지금 켜두면 나중에 서버 채널까지 쓸 때 다시 안 와도 됩니다.</span>
+                <span>DM 전용으로만 쓸 거면 권한이 0개여도 작동하지만, 지금 켜두면 나중에 서버 채널까지 쓸 때 이 화면에 다시 돌아와 재초대하지 않아도 됩니다.</span>
               </div>
               <div class="checkpoint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -626,13 +625,15 @@ footer{border-top:1px solid var(--border);margin-top:var(--space-2xl);padding:2.
               <h3>Bun 설치 + 플러그인 설치</h3>
               <p>이제 내 컴퓨터 쪽 차례입니다. 먼저 Bun을 깔고, Claude Code에 Discord 플러그인을 설치해요.</p>
               <p class="sub">① Bun 설치 (운영체제에 맞는 것 하나만)</p>
+              <p class="sub">Windows (PowerShell)</p>
               <div class="code">
                 <button class="code-copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> 복사</button>
-<pre data-lang="shell"><span class="cmt"># Windows (PowerShell)</span>
-powershell -c "irm bun.sh/install.ps1 | iex"
-
-<span class="cmt"># macOS / Linux</span>
-curl -fsSL https://bun.sh/install | bash</pre>
+<pre data-lang="shell">powershell -c "irm bun.sh/install.ps1 | iex"</pre>
+              </div>
+              <p class="sub">macOS / Linux</p>
+              <div class="code">
+                <button class="code-copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> 복사</button>
+<pre data-lang="shell">curl -fsSL https://bun.sh/install | bash</pre>
               </div>
               <p class="sub">② Claude Code 세션에서 플러그인 설치</p>
               <div class="code">
@@ -671,7 +672,7 @@ curl -fsSL https://bun.sh/install | bash</pre>
               <p><span class="path">~/.claude/channels/discord/.env</span> 의 <span class="path">DISCORD_BOT_TOKEN=</span></p>
               <div class="callout tip">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                <span>서버는 부팅할 때 <code>.env</code> 를 <b>한 번만</b> 읽습니다. 그래서 다음 6단계에서 세션을 새로 켜는 거예요.</span>
+                <span>봇 연결 프로그램은 시작할 때 <code>.env</code> 를 <b>한 번만</b> 읽습니다. 그래서 다음 6단계에서 세션을 새로 켜는 거예요.</span>
               </div>
               <div class="checkpoint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -734,7 +735,7 @@ curl -fsSL https://bun.sh/install | bash</pre>
               </div>
               <div class="checkpoint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><b>성공 신호</b> — 그다음 DM부터 <b>클로드 본인</b>이 답하기 시작함 🎉</span>
+                <span><b>성공 신호</b> — 그다음 DM부터 <b>클로드 본인</b>이 답하기 시작함</span>
               </div>
             </div>
             <div class="step-done-row">
@@ -750,12 +751,12 @@ curl -fsSL https://bun.sh/install | bash</pre>
             <div class="body">
               <span class="step-tag tag-security">보안 · 필수</span>
               <h3>allowlist로 잠그기</h3>
-              <p>페어링은 내 ID를 잡아내기 위한 <b>임시</b> 모드입니다. 들어왔으면 반드시 잠가서, 모르는 사람이 페어링 코드를 받지 못하게 하세요.</p>
+              <p>페어링은 내 계정을 봇에 등록하기 위한 <b>임시</b> 모드입니다. 들어왔으면 반드시 잠가서, 모르는 사람이 페어링 코드를 받지 못하게 하세요.</p>
               <div class="code">
                 <button class="code-copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> 복사</button>
 <pre data-lang="claude"><span class="prompt">&gt;</span> /discord:access policy allowlist</pre>
               </div>
-              <p class="sub">정책 변경은 메시지마다 즉시 반영되므로 재시작이 필요 없습니다.</p>
+              <p class="sub">메시지가 들어올 때마다 정책을 다시 읽으므로 재시작이 필요 없습니다.</p>
               <div class="checkpoint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 <span><b>성공 신호</b> — 정책이 <b>allowlist</b> 로 표시되고, 허용된 사람만 봇에 닿을 수 있음</span>
@@ -771,7 +772,6 @@ curl -fsSL https://bun.sh/install | bash</pre>
 
       <!-- 완료 배너 -->
       <div class="finish reveal" id="finish">
-        <div class="big">🎉</div>
         <h2>연동 완료!</h2>
         <p>이제 폰이든 노트북이든, 디스코드만 열면 클로드에게 일을 시킬 수 있습니다. 아래 사용법을 구경해 보세요.</p>
         <a href="#usage" class="btn btn-primary">사용법 보기 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -827,7 +827,7 @@ curl -fsSL https://bun.sh/install | bash</pre>
         </details>
         <details>
           <summary><span class="q">Q3</span> 토큰을 바꿨는데 반영이 안 돼요 <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="ans">서버는 부팅 시 <code>.env</code>를 한 번만 읽습니다. 토큰을 바꿨으면 세션을 <b>재시작</b>하거나 <code>/reload-plugins</code>를 실행하세요.</div>
+          <div class="ans">봇 연결 프로그램은 시작할 때 <code>.env</code>를 한 번만 읽습니다. 봇 토큰 등 <code>.env</code>를 바꿨다면 클로드를 <b>완전히 껐다 켜는 것</b>이 확실합니다. <code>/reload-plugins</code>는 환경에 따라 될 수도 있지만, 안 되면 재시작하세요.</div>
         </details>
         <details>
           <summary><span class="q">Q4</span> 봇에게 DM이 안 보내져요 <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -862,7 +862,7 @@ curl -fsSL https://bun.sh/install | bash</pre>
         </div>
         <div class="sec-item reveal">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
-          <div><h4>.env 파일 권한</h4><p>토큰이 담긴 <code>~/.claude/channels/discord/.env</code>는 본인만 읽도록 권한을 제한합니다 (macOS/Linux는 <code>chmod 600</code>).</p></div>
+          <div><h4>.env 파일 권한</h4><p>토큰이 담긴 <code>~/.claude/channels/discord/.env</code>는 본인만 읽도록 권한을 제한합니다 (macOS/Linux는 <code>chmod 600</code>). Windows는 내 계정 폴더 안이라 기본 보호되지만, 공용 PC라면 다른 계정과 폴더를 공유하지 마세요.</p></div>
         </div>
       </div>
     </section>
@@ -933,8 +933,7 @@ curl -fsSL https://bun.sh/install | bash</pre>
     btn.addEventListener("click",function(){
       var pre=btn.parentElement.querySelector("pre");
       var lines=pre.innerText.replace(/^>\s?/gm,"").trim();
-      var text=pre.innerText.trim();
-      navigator.clipboard.writeText(text).then(function(){
+      navigator.clipboard.writeText(lines).then(function(){
         var orig=btn.innerHTML;
         btn.classList.add("copied");
         btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 복사됨';

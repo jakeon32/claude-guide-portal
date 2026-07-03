@@ -97,7 +97,7 @@
           <p>지정한 폴더에 저장</p>
         </div>
       </div>
-      <p class="flow-note">핵심은 <b>auth 방식</b>입니다. API 키를 발급받아 종량 과금하는 게 아니라, <code>codex login</code>으로 <b>이미 쓰고 있는 ChatGPT 구독 계정</b>에 로그인해 그 사용량 안에서 이미지를 생성합니다.</p>
+      <p class="flow-note">핵심은 <b>'구독 계정 로그인'(auth) 방식</b>입니다. API 키를 발급받아 종량 과금하는 게 아니라, <code>codex login</code>으로 <b>이미 쓰고 있는 ChatGPT 구독 계정</b>에 로그인해 그 사용량 안에서 이미지를 생성합니다.</p>
     </section>
 
     <section class="section" id="prep" style="padding-top:0">
@@ -127,7 +127,7 @@
     <section class="section" aria-label="설치 단계" style="padding-top:0">
       <div class="section-head">
         <h2>5단계로 연동 완성</h2>
-        <p class="lead">설치 → 로그인 → 테스트 → Claude 연동 순서입니다.</p>
+        <p class="lead">설치 → 로그인 → 테스트 → Claude 연동 → 결과 확인 순서입니다.</p>
       </div>
       <div class="steps">
 
@@ -135,7 +135,7 @@
           <div class="step-num">1</div>
           <div class="step-body">
             <h3>Codex CLI 설치</h3>
-            <p>터미널(PowerShell / 터미널.app)에서 한 줄이면 됩니다. Windows·macOS 공통.</p>
+            <p>터미널(PowerShell / 터미널.app)에서 한 줄이면 됩니다. Windows·macOS 공통. npm은 Node.js를 설치하면 함께 깔리는 프로그램 설치 명령입니다.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>npm install -g @openai/codex</pre></div>
             <p>설치 확인:</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>codex --version</pre></div>
@@ -148,9 +148,9 @@
             <h3>ChatGPT 계정으로 로그인 (auth)</h3>
             <p>여기가 이 가이드의 핵심입니다. API 키 대신 <b>구독 계정 로그인</b>으로 인증합니다.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>codex login</pre></div>
-            <p>→ 브라우저 창이 열리면 <b>평소 쓰는 ChatGPT 계정</b>으로 로그인합니다. "Sign in with ChatGPT"를 선택하세요.</p>
+            <p>→ <code>codex login</code>을 실행하면 터미널에 로그인 방식 선택지가 뜹니다. "Sign in with ChatGPT"를 고르면 브라우저가 열리고, <b>평소 쓰는 ChatGPT 계정</b>으로 로그인하면 됩니다.</p>
             <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-              <div>로그인은 <b>한 번만</b> 하면 됩니다. 인증 정보가 로컬(<code>~/.codex/</code>)에 저장돼 이후 자동으로 쓰입니다. API 키를 만들거나 결제 수단을 등록할 필요가 없습니다.</div>
+              <div>로그인은 <b>한 번만</b> 하면 됩니다. 인증 정보가 로컬(<code>~/.codex/</code>)에 저장돼 이후 자동으로 쓰입니다(~는 내 사용자 폴더 — Windows는 <code>C:\Users\내이름</code>). API 키를 만들거나 결제 수단을 등록할 필요가 없습니다.</div>
             </div>
           </div>
         </article>
@@ -159,17 +159,17 @@
           <div class="step-num">3</div>
           <div class="step-body">
             <h3>첫 이미지 생성 테스트</h3>
-            <p>프롬프트는 명령어에 직접 쓰지 않고, <b>텍스트 파일로 저장해서 넘기는 방식</b>이 안전합니다. 먼저 메모장 등으로 <code>prompt.txt</code> 파일을 만들어 이렇게 적습니다.</p>
+            <p>프롬프트는 명령어에 직접 쓰지 않고, <b>텍스트 파일로 저장해서 넘기는 방식</b>이 안전합니다. 먼저 이미지가 저장될 <b>작업 폴더</b>를 하나 만드세요(예: <code>C:\ai-images</code>, macOS는 <code>~/ai-images</code>). 그리고 메모장 등으로 <code>prompt.txt</code> 파일을 만들어 <b>그 폴더 안에</b> 저장하고, 내용은 이렇게 적습니다.</p>
             <div class="code"><button class="copy" type="button">복사</button><pre>귀여운 아기 고양이가 노트북으로 코딩하는 일러스트를 생성해줘.
 Save as cat.png</pre></div>
-            <p>그 다음 실행합니다.</p>
+            <p>그 다음 실행합니다. 명령 속 <code>C:\ai-images</code> / <code>~/ai-images</code>는 예시 자리표시자입니다 — <b>본인이 만든 폴더 경로로 바꾸세요.</b></p>
             <span class="oslabel win"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M11 4v16" stroke-linecap="round"/></svg> Windows (PowerShell)</span>
-            <div class="code"><button class="copy" type="button">복사</button><pre>Get-Content prompt.txt | codex exec --full-auto --skip-git-repo-check -C "C:\작업폴더" -</pre></div>
+            <div class="code"><button class="copy" type="button">복사</button><pre>Get-Content C:\ai-images\prompt.txt | codex exec --full-auto --skip-git-repo-check -C "C:\ai-images" -</pre></div>
             <span class="oslabel mac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 8a4 4 0 0 0 0 8"/></svg> macOS</span>
-            <div class="code"><button class="copy" type="button">복사</button><pre>cat prompt.txt | codex exec --full-auto --skip-git-repo-check -C ~/작업폴더 -</pre></div>
+            <div class="code"><button class="copy" type="button">복사</button><pre>cat ~/ai-images/prompt.txt | codex exec --full-auto --skip-git-repo-check -C ~/ai-images -</pre></div>
             <p>약 30초 뒤 <code>-C</code>로 지정한 폴더에 <code>cat.png</code>가 생기면 성공입니다.</p>
             <div class="callout warn"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
-              <div><b>한글 프롬프트는 반드시 이렇게 "파일로 저장해서" 넘기세요.</b> 명령어 뒤에 한글 문장을 바로 붙여 쓰면 글자가 깨져 실패합니다. 위 명령은 "파일 내용을 읽어서 codex에 흘려 넣어라"는 뜻이고, 맨 끝의 <code>-</code> 기호까지 포함해 <b>통째로 복사</b>하면 됩니다. 그리고 프롬프트 안에 <b>"Save as 파일명.png"</b>를 꼭 넣어야 내 작업 폴더에 저장됩니다(없으면 깊숙한 임시 폴더에 들어가 찾기 번거로움).</div>
+              <div><b>한글 프롬프트는 반드시 이렇게 "파일로 저장해서" 넘기세요.</b> 명령어 뒤에 한글 문장을 바로 붙여 쓰면 글자가 깨져 실패합니다. 위 명령은 "파일 내용을 읽어서 codex에 흘려 넣어라"는 뜻이고, <b>폴더 경로만 본인 것으로 바꾸고</b>, 맨 끝의 <code>-</code> 기호까지 나머지는 <b>그대로 복사</b>하세요. 그리고 프롬프트 안에 <b>"Save as 파일명.png"</b>를 꼭 넣어야 내 작업 폴더에 저장됩니다(없으면 깊숙한 임시 폴더에 들어가 찾기 번거로움).</div>
             </div>
           </div>
         </article>
@@ -194,7 +194,8 @@ Save as cat.png</pre></div>
             <h3>결과 확인</h3>
             <p>지정한 폴더에 PNG가 생겼는지 확인합니다. 파일이 안 보이면:</p>
             <div class="code"><pre>기본 저장 위치(Save as 미지정 시):
-~/.codex/generated_images/{세션-id}/</pre></div>
+~/.codex/generated_images/무작위-폴더명/</pre></div>
+            <p>(폴더명은 실행마다 다릅니다)</p>
             <div class="callout ok"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
               <div>여기까지 되면 연동 완료. 이제 Claude에게 "codex로 이미지 만들어줘"라고만 하면 됩니다.</div>
             </div>
@@ -213,13 +214,13 @@ Save as cat.png</pre></div>
         <div><b>매달림(hang) 현상</b> — <code>--full-auto</code>는 이미지를 저장한 뒤에도 프로세스가 <b>스스로 끝나지 않고 매달릴 수 있습니다</b>(1시간 이상 확인됨). 배치로 여러 장을 돌릴 땐 "출력 PNG가 생기면 프로세스를 강제 종료하고 다음으로"(poll-then-kill) 패턴이 필수입니다. Claude에게 시키면 이 처리를 알아서 합니다.</div>
       </div>
       <div class="callout warn"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
-        <div><b>병렬 실행 금지</b> — 동시에 여러 개 돌리면 같은 세션 파일을 덮어써 꼬입니다. 여러 장은 <b>순차 실행</b>이 정답입니다. 한 장에 약 30초 걸립니다.</div>
+        <div><b>병렬 실행 금지</b> — 동시에 여러 개 돌리면 작업 기록 파일을 서로 덮어써 꼬입니다. 여러 장은 <b>순차 실행</b>이 정답입니다. 한 장에 약 30초 걸립니다.</div>
       </div>
       <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
         <div><b>레퍼런스 이미지로 톤 맞추기</b> — <code>-C</code> 작업 폴더에 참고할 PNG를 넣고 프롬프트에 그 파일명을 언급하면, 톤·구도를 따라간 일관된 시리즈를 만들 수 있습니다. (WIZMO 차량 시리즈 4장으로 검증)</div>
       </div>
       <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-        <div><b>사용량</b> — 이미지 한 장에 구독 사용량(토큰)을 꽤 씁니다(약 6만 토큰). 무한정은 아니니 대량 생성은 ComfyUI 쪽이 경제적입니다.</div>
+        <div><b>사용량</b> — 이미지 한 장에 구독 사용량(토큰)을 꽤 씁니다(약 6만 토큰 — 토큰은 구독 사용량을 세는 단위). 무한정은 아니니 대량 생성은 ComfyUI 쪽이 경제적입니다.</div>
       </div>
     </section>
 
@@ -251,7 +252,7 @@ Save as cat.png</pre></div>
         <div><b>이미지가 어디 저장됐는지 모르겠음</b> — 프롬프트에 "Save as 파일명.png"를 안 넣은 경우입니다. <code>~/.codex/generated_images/</code> 밑 최신 세션 폴더를 확인하고, 다음부터는 Save as를 넣으세요.</div>
       </div>
       <div class="callout"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
-        <div><b>로그인 창이 안 뜸 / 인증 만료</b> — <code>codex login</code>을 다시 실행하세요. 회사 프록시·VPN이 브라우저 인증을 막는 경우 잠시 끄고 로그인합니다.</div>
+        <div><b>로그인 창이 안 뜸 / 인증 만료</b> — <code>codex login</code>을 다시 실행하세요. 회사 보안 프로그램(프록시)·VPN이 브라우저 인증을 막는 경우 잠시 끄고 로그인합니다.</div>
       </div>
       <div class="callout warn"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
         <div><b>보안</b> — <code>codex login</code> 인증 정보는 내 컴퓨터 <code>~/.codex/</code>에 저장됩니다. 공용 PC에서는 쓰고 나서 <code>codex logout</code>으로 로그아웃하세요. 계정 비밀번호를 Claude나 스크립트에 적을 일은 없습니다.</div>
