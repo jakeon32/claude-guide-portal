@@ -27,6 +27,7 @@
   --moon:#2f7fdc;   --moon-soft:#dcecfb;
   --figma:#a259ff;  --figma-soft:#efe4ff;
   --vibe:#0ea5a0;   --vibe-soft:#d7f2f0;
+  --codex:#189a53;  --codex-soft:#def0e4;
   --ok:#2f8a5b; --ok-soft:#e1f0e7;
   --warn:#b8860b; --warn-soft:#f7eed4;
   --danger:#c0392b; --danger-soft:#f6e1de;
@@ -58,6 +59,7 @@
   --moon:#5aa6ef; --moon-soft:#1a2a3f;
   --figma:#c08bff; --figma-soft:#2c1f42;
   --vibe:#3ad0ca; --vibe-soft:#123330;
+  --codex:#4ecb8d; --codex-soft:#143323;
   --ok:#5bc98c; --ok-soft:#1d3328;
   --warn:#e0b34a; --warn-soft:#352d18;
   --danger:#e87263; --danger-soft:#3a2422;
@@ -71,6 +73,7 @@
 [data-topic="remote"]{--accent:var(--tail);--accent-soft:var(--tail-soft);--accent-2:var(--moon)}
 [data-topic="vibe"]{--accent:var(--vibe);--accent-soft:var(--vibe-soft);--accent-2:var(--claude)}
 [data-topic="figma"]{--accent:var(--figma);--accent-soft:var(--figma-soft);--accent-2:var(--claude)}
+[data-topic="codex"]{--accent:var(--codex);--accent-soft:var(--codex-soft);--accent-2:var(--claude)}
 
 /* ---------- 리셋 ---------- */
 *{box-sizing:border-box;margin:0;padding:0}
